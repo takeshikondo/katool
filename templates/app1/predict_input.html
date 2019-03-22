@@ -1,0 +1,62 @@
+{% extends "app1/base.html" %}
+
+{% block body %}
+
+<div class="frame">
+    <div class="headline">
+        <h3>郊外店の年間売上予測</h3>
+    </div>
+
+    <div class="comment">
+        <p>&emsp;平均的な店舗を想定</p>
+        <p>&emsp;&emsp;座席数：36～39</p>
+        <p>&emsp;&emsp;駐車場：13～24</p>
+        <p>&emsp;&emsp;営業時間：14.0～14.5</p>
+    </div>
+
+    <div class="input_main">
+        <p>入力し、送信ボタンを押してください。</p>
+        <form method="post" action="">{% csrf_token %}
+            {{ form.input1.label }}：
+            {{ form.input1 }}
+            <br>
+            {{ form.input2.label }}：
+            {{ form.input2 }}
+            <br>
+            {{ form.input3.label }}：
+            {{ form.input3 }}
+            <br>
+            {{ form.input4.label }}：
+            {{ form.input4 }}
+            <br>
+            {{ form.input5.label }}：
+            {{ form.input5 }}
+            <br>
+            {{ form.input6.label }}：
+            {{ form.input6 }}
+            <br>
+            {{ form.input7.label }}：
+            {{ form.input7 }}
+            <br>
+            {{ form.input8.label }}：
+            {{ form.input8 }}
+            <br>
+            {{ form.input9.label }}：
+            {{ form.input9 }}
+            <br>
+            {{ form.input10.label }}：
+            {{ form.input10 }}
+            <br>
+            {{ form.input11.label }}：
+            {{ form.input11 }}
+            <br>
+            <br>
+            <input type="submit" value="送信"/>
+        </form><br>
+    </div>
+    <div>
+        <a href="{% url 'app1:app1_func' %}">分析機能一覧画面へ</a>
+    </div>
+</div>
+
+{% endblock %}

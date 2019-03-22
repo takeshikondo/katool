@@ -1,0 +1,33 @@
+body {
+    #background: white url("image1.jpg") no-repeat;
+    #background-image: url("image1.jpg");
+    #background-repeat: no-repeat;
+    #background-size: cover;
+    background-color: beige;
+}
+
+.frame {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.headline {
+    font-size: 20px;
+    border-bottom: solid 2px black;
+}
+
+.comment {
+    font-size: 15px;
+    border-bottom: solid 1px black;
+}
+
+.output_main {
+    font-size:  18px;
+    #border-bottom: solid 1px black;
+}
+
+.output_comment {
+    font-size: 15px;
+    border-bottom: solid 1px black;
+}

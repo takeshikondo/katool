@@ -1,0 +1,36 @@
+{% extends "app1/base.html" %}
+
+{% block body %}
+
+<div class="frame">
+    <div class="headline">
+        <h3>年間売上予測（千円）</h3>
+    </div>
+
+    <div class="comment">
+        <p>&emsp;100回のシミュレーション結果</p>
+    </div>
+
+    <div class="output_main">
+        <br>
+        &emsp;平均：{{mean}} <br>
+        &emsp;標準偏差：{{std}}
+        <br><br>
+        &emsp;1月：{{jan}} &emsp;&emsp;7月：{{jul}}<br>
+        &emsp;2月：{{feb}} &emsp;&emsp;8月：{{aug}}<br>
+        &emsp;3月：{{mar}} &emsp;&emsp;9月：{{sep}}<br>
+        &emsp;4月：{{apr}} &emsp;&emsp;10月：{{oct}}<br>
+        &emsp;5月：{{may}} &emsp;&emsp;11月：{{nov}}<br>
+        &emsp;6月：{{jun}} &emsp;&emsp;12月：{{dec}}<br>
+    </div><br>
+
+    <div>
+        <a href="{% url 'app1:app1_predict' %}">入力画面へ</a><br>
+    </div>
+
+    <div>
+        <a href="{% url 'app1:app1_func' %}">分析機能一覧画面へ</a>
+    </div>
+</div>
+
+{% endblock %}

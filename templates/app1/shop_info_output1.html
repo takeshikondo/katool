@@ -1,0 +1,47 @@
+{% extends "app1/base.html" %}
+
+{% block body %}
+
+<div class="frame">
+    <div class="headline">
+        <h3>店舗情報</h3>
+    </div>
+
+    <div class="comment">
+        <p>&emsp;</p>
+    </div>
+
+    <div class="output_main">
+        <br>
+        &emsp;店舗ID：{{shop_id}}<br>
+        &emsp;店舗名：{{name}}<br>
+        <br>
+              
+        <table border="1"　width="100%">
+            <tr>
+                <th>開店年月</th>
+                <th>業態</th>
+                <th>座席数</th>
+                <th>駐車場</th>
+            </tr>
+            <tr align="right">
+                <td>{{open_ym}}</td>
+                <td>{{shop_type}}</td>
+                <td>{{n_seats}}</td>
+                <td>{{park}}</td>
+            </tr>
+        </table>
+                       
+             
+    </div><br>
+
+    <div>
+        <a href="{% url 'app1:app1_shop_info' %}">入力画面へ</a>
+    </div>
+
+    <div>
+        <a href="{% url 'app1:app1_func' %}">分析機能一覧画面へ</a>
+    </div>
+</div>
+
+{% endblock %}

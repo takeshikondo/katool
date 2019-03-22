@@ -1,0 +1,36 @@
+{% extends "app1/base.html" %}
+
+{% block body %}
+
+<div class="frame">
+    <div class="headline">
+        <h3>月次売上順位</h3>
+    </div>
+
+    <div class="comment">
+        <p>&emsp;上位10店舗と下位10店舗を表示します。</p>
+    </div>
+
+    <div class="input_main">
+        <p>入力し、送信ボタンを押してください。</p>
+        <form method="post" action="">{% csrf_token %}
+            {{ form.year.label }}:
+            {{ form.year }}<br>
+            {{ form.month.label }}:
+            {{ form.month }}
+            <br>
+            <br>
+            <input type="submit" value="送信"/>
+        </form><br>
+    </div>
+
+    <div>
+        <a href="{% url 'app1:app1_sales' %}">売上分析機能一覧画面へ</a>
+    </div>
+
+    <div>
+        <a href="{% url 'app1:app1_func' %}">分析機能一覧画面へ</a>
+    </div>
+</div>
+
+{% endblock %}

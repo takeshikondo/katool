@@ -1,7 +1,8 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
+from django.conf import settings
 from . import forms
-import os
+#import os
 import pandas as pd
 import numpy as np
 
@@ -216,9 +217,9 @@ def sales_choice(request):
 
 def sales_chart(request):
     
-    file = './static/app1/temp_image/chart.png'
-    if os.path.isfile(file):
-        os.remove(file)
+    #file = './app1/src/chart.png'
+    #if os.path.isfile(file):
+    #    os.remove(file)
 
     if request.method == 'POST':
                   
@@ -227,7 +228,7 @@ def sales_chart(request):
         if form.is_valid():
             import matplotlib.pyplot as plt
             
-            path = './static/app1/'
+            path = './app1/src/'
             df_info = pd.read_csv(path+'info.csv')
             df_sales = pd.read_csv(path+'sales.csv')
                     
@@ -240,12 +241,21 @@ def sales_chart(request):
             
             name = df_info[df_info['id']==shop_id]['name'].values[0]
             sales = df_temp['sales'].values
+            ym = df_temp['time'].values
             
             year_s = int(df_temp['time'].values[0]/100)
             month_s = int(df_temp['time'].values[0] - year_s*100)
             year_e = int(df_temp['time'].values[-1]/100)
             month_e = int(df_temp['time'].values[-1] - year_e*100)
             
+            #file_url = settings.BASE_DIR + '/app1/src/chart.png'
+            
+            x = []
+            y = []
+            for i in range(len(sales)):
+                x.append(ym[i])
+                y.append(sales[i])
+                
             d = {
                 'shop_id': shop_id,
                 'name': name,
@@ -257,13 +267,17 @@ def sales_chart(request):
                 'std': '{:,}'.format(int(np.std(sales))),
                 'max': '{:,}'.format(int(np.max(sales))),
                 'min': '{:,}'.format(int(np.min(sales))),
+                'x': x,
+                'y': y,
+                'max_int': int(np.max(sales)),
+                'min_int': int(np.min(sales)),
             }
             
-            plt.figure(figsize=(5, 3))
-            plt.plot(sales)
-            plt.grid(True)
-            plt.savefig(path+'temp_image/chart.png')
-            plt.close()
+            #plt.figure(figsize=(5, 3))
+            #plt.plot(sales)
+            #plt.grid(True)
+            #plt.savefig(path+'chart.png')
+            #plt.close()
 
             return render(request, 'app1/sales_chart_output1.html', d)
            
@@ -314,7 +328,7 @@ def sales_order(request):
 
         if form.is_valid():
             
-            path = './static/app1/'
+            path = './app1/src/'
             df_info = pd.read_csv(path+'info.csv')
             df_sales = pd.read_csv(path+'sales.csv')
 
@@ -409,7 +423,7 @@ def shop_info(request):
 
         if form.is_valid():
             
-            path = './static/app1/'
+            path = './app1/src/'
             df_info = pd.read_csv(path+'info.csv')
             df_shop = pd.read_csv(path+'shop.csv')
                     
